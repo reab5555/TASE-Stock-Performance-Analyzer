@@ -36,7 +36,7 @@ def get_stock_data(start_date, end_date, stocks):
 
 
 # Create bar chart
-def create_chart(data):
+def create_chart(data, start_date, end_date):
     sorted_data = dict(sorted(data.items(), key=lambda x: x[1]['pct_change'], reverse=True)[:80])  # Top 80 stocks
 
     fig = go.Figure()
@@ -59,7 +59,7 @@ def create_chart(data):
         hoverinfo='text',
         marker_color=colors
     ))
-    title = 'Stocks Performance'
+    title = f'TASE Stocks Performance ({start_date.strftime("%Y-%m-%d")} to {end_date.strftime("%Y-%m-%d")})'
     fig.update_layout(
         title=title,
         xaxis_title='Stocks',
@@ -79,9 +79,15 @@ def analyze_stocks(year, month, day, num_days):
     stocks = load_stocks()
     start_date = datetime(year, month, day)
     end_date = start_date + timedelta(days=num_days)
+
+    # Ensure end_date is not in the future
+    current_date = datetime.now()
+    if end_date > current_date:
+        end_date = current_date
+
     data = get_stock_data(start_date, end_date, stocks)
 
-    chart = create_chart(data)
+    chart = create_chart(data, start_date, end_date)
 
     return chart
 
