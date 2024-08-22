@@ -37,7 +37,7 @@ def get_stock_data(start_date, end_date, stocks):
 
 # Create bar chart
 def create_chart(data):
-    sorted_data = dict(sorted(data.items(), key=lambda x: x[1]['pct_change'], reverse=True)[:100])  # Top 100 stocks
+    sorted_data = dict(sorted(data.items(), key=lambda x: x[1]['pct_change'], reverse=True)[:80])  # Top 80 stocks
 
     fig = go.Figure()
 
