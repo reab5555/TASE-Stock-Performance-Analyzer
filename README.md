@@ -13,4 +13,4 @@ This project is designed to identify TASE (Tel Aviv Stock Exchange) stocks perfo
 - *Initial Date*: Date Period: The specific date for identifying high-demand products.   
 - *Number of Days*: The number of days after the demand date to analyze stock value changes.   
 
-<img src="output.png" width="800" alt="alt text">
+<img src="output.png" width="1000" alt="alt text">
